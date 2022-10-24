@@ -4,8 +4,6 @@ import sys
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
 
-#SpotAx(y), SpotBx(y), BEm(n), Result, ErrerMessage, ResuBu
-
 def CarculDistance(a, b, c, d):
     dis = ((a - c) ** 2 + (b - d) ** 2) **(1/2)
     return dis
