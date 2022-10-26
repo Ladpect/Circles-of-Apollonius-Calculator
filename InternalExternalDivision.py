@@ -33,21 +33,22 @@ class WindowClass(QMainWindow, form_class):
                                                  #       
     def result(self):                            #여기에서 실행
         try:
-            Ax = float(self.SpotAx.text())
-            Ay = float(self.SpotAy.text())
-            Bx = float(self.SpotBx.text())
-            By = float(self.SpotBy.text())
-            m = float(self.BEm.text())
-            n = float(self.BEn.text())
-            self.ErrorMessage.setText(f"에러 : 없음")
+            Ax = float(self.SpotAx.text()) #입력란에 입력된 점 A의 x좌표 
+            Ay = float(self.SpotAy.text()) #입력란에 입력된 점 A의 y좌표
+            Bx = float(self.SpotBx.text()) #입력란에 입력된 점 B의 x좌표
+            By = float(self.SpotBy.text()) #입력란에 입력된 점 B의 y좌표
+            m = float(self.BEm.text()) #입력란에 입력된 두 점 사이 거리의 비 m
+            n = float(self.BEn.text()) #입력란에 입력된 두 점 사이 거리의 비 n
+            self.ErrorMessage.setText(f"에러 : 없음") #에러 메세지 초기화
 #-------------------------------------------------------------------
-            Ix = InternalX(Ax, Bx, m, n)
-            Iy = InternalY(Ay, By, m, n)
-            Ex = ExternalX(Ax, Bx, m, n)
-            Ey = ExternalY(Ay, By, m, n)
+            Ix = InternalX(Ax, Bx, m, n) #내분점 x 연산
+            Iy = InternalY(Ay, By, m, n) #내분점 y 연산
+            Ex = ExternalX(Ax, Bx, m, n) #외분점 x 연산
+            Ey = ExternalY(Ay, By, m, n) #외분점 y 연산
 #-------------------------------------------------------------------
-            CirMidX = (Ix + Ex) / 2
-            CirMidY = (Iy + Ey) / 2
+            #내분점과 외분점의 중심을 계산. 아폴로니우스의 원 중심이 됨.
+            CirMidX = (Ix + Ex) / 2 #중심 x 좌표
+            CirMidY = (Iy + Ey) / 2 #중심 y 좌표
 #-------------------------------------------------------------------
             Dist = CarculDistance(CirMidX, CirMidY, Ix, Iy)
             self.Result.setText(f"원의 중심좌표 : ({round(CirMidX, 3)}, {round(CirMidY, 3)}) / 반지름 : {round(Dist, 3)}")
