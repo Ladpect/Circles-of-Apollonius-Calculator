@@ -3,7 +3,7 @@ import sys
 from PyQt5 import uic, QtCore, QtGui, QtWidgets 
 from PyQt5.QtWidgets import *
 
-def CarculDistance(a, b, c, d):    #두 점 사이 거리 구하는 함수
+def CalculDistance(a, b, c, d):    #두 점 사이 거리 구하는 함수
     dis = ((a - c) ** 2 + (b - d) ** 2) **(1/2)
     return dis
 
@@ -50,7 +50,7 @@ class WindowClass(QMainWindow, form_class):
             CirMidX = (Ix + Ex) / 2 #중심 x 좌표
             CirMidY = (Iy + Ey) / 2 #중심 y 좌표
 #-------------------------------------------------------------------
-            Dist = CarculDistance(CirMidX, CirMidY, Ix, Iy) #내분점과 원의 중심의 거리를 구함. 아폴로니우스의 원의 반지름임.
+            Dist = CalculDistance(CirMidX, CirMidY, Ix, Iy) #내분점과 원의 중심의 거리를 구함. 아폴로니우스의 원의 반지름임.
             self.Result.setText(f"원의 중심좌표 : ({round(CirMidX, 3)}, {round(CirMidY, 3)}) / 반지름 : {round(Dist, 3)}")
         except ValueError:
             self.ErrorMessage.setText(f"에러 : 문자가 입력되어있거나 칸이 비어있음") #점 좌표 혹은 거리의 비 입력칸에 문자가 들어간 경우 발생할 오류 예외처리
