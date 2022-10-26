@@ -46,11 +46,11 @@ class WindowClass(QMainWindow, form_class):
             Ex = ExternalX(Ax, Bx, m, n) #외분점 x 연산
             Ey = ExternalY(Ay, By, m, n) #외분점 y 연산
 #-------------------------------------------------------------------
-            #내분점과 외분점의 중심을 계산. 아폴로니우스의 원 중심이 됨.
+            #내분점과 외분점의 중심을 계산. 아폴로니우스의 원 중심임.
             CirMidX = (Ix + Ex) / 2 #중심 x 좌표
             CirMidY = (Iy + Ey) / 2 #중심 y 좌표
 #-------------------------------------------------------------------
-            Dist = CarculDistance(CirMidX, CirMidY, Ix, Iy)
+            Dist = CarculDistance(CirMidX, CirMidY, Ix, Iy) #내분점과 원의 중심의 거리를 구함. 아폴로니우스의 원의 반지름임.
             self.Result.setText(f"원의 중심좌표 : ({round(CirMidX, 3)}, {round(CirMidY, 3)}) / 반지름 : {round(Dist, 3)}")
         except ValueError:
             self.ErrorMessage.setText(f"에러 : 문자가 입력되어있거나 칸이 비어있음") #점 좌표 혹은 거리의 비 입력칸에 문자가 들어간 경우 발생할 오류 예외처리
